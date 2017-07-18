@@ -1,19 +1,33 @@
-import React, {Component} from 'react';
-import 'src/App.scss';
-import Nav from './components/Nav';
-import { BrowserRouter } from 'react-router-dom';
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Row, Column } from 'react-foundation';
 
+import Nav from './components/Nav';
+import Home from './components/Home';
+import Timer from './components/Timer';
+import Countdown from './components/Countdown';
 
 import 'foundation-sites/dist/css/foundation.min.css';
 import 'foundation-sites/dist/css/foundation-float.min.css';
-
 import './styles/app.scss';
+
 
 class App extends Component {
     render() {
         return (
             <BrowserRouter>
-                <Nav />
+                <div>
+                    <Nav />
+                    <Row>
+                        <Column medium={8} centerOnSmall>
+                            <Switch>
+                                <Route exact path='/' component={Home} />
+                                <Route path='/timer' component={Timer} />
+                                <Route path='/countdown' component={Countdown} />
+                            </Switch>
+                        </Column>
+                    </Row>
+                </div>
             </BrowserRouter>
         );
     }
