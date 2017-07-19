@@ -35,12 +35,15 @@ class Countdown extends Component {
                     this.setState({ count: undefined });
                 // falls through
                 case PAUSED:
-                    clearInterval(this.timer);
-                    delete this.timer;
+                    this.stopTimer();
                     break;
                 // no default
             }
         }
+    }
+
+    componentWillUnmount() {
+        this.stopTimer();
     }
 
     handleSetCountdown(seconds) {
@@ -51,7 +54,6 @@ class Countdown extends Component {
     }
 
     handleStatusChange(newStatus) {
-        console.log(newStatus);
         this.setState({ countdownStatus: newStatus });
     }
 
@@ -63,9 +65,14 @@ class Countdown extends Component {
                     count: newCount,
                 });
             } else {
-                clearInterval(this.timer)
+                this.stopTimer();
             }
         }, 1000);
+    }
+
+    stopTimer() {
+        clearInterval(this.timer);
+        delete this.timer;
     }
 
     render() {
