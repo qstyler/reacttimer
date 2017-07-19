@@ -18,7 +18,7 @@ class App extends Component {
                 <div>
                     <Nav />
                     <Row>
-                        <Column medium={8} centerOnSmall>
+                        <Column medium={4} small={8} centerOnSmall>
                             <Switch>
                                 <Route exact path='/' component={Timer} />
                                 <Route path='/countdown' component={Countdown} />

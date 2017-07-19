@@ -17,7 +17,7 @@ class Clock extends Component {
         return (
             <div className="clock">
                 <span className="clock-text">
-                    {totalSeconds ? Clock.formatSeconds(totalSeconds) : emptyText}
+                    {!isNaN(totalSeconds) ? Clock.formatSeconds(totalSeconds) : emptyText}
                 </span>
             </div>
         );

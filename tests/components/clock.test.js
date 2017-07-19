@@ -39,11 +39,11 @@ describe('Testing clock component', () => {
         });
 
         it('should render empty text', () => {
-            expect(shallow(<Clock totalSeconds={0} />))
+            expect(shallow(<Clock />))
                 .toHaveText(Clock.defaultProps.emptyText);
 
             const emptyText = 'Weeaboo';
-            expect(shallow(<Clock totalSeconds={0} emptyText={emptyText} />))
+            expect(shallow(<Clock emptyText={emptyText} />))
                 .toHaveText(emptyText);
         });
 
