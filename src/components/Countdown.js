@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
+
 import Clock from './Clock';
 import CountdownForm from './CountdownForm';
+import Controls from './Controls';
 
 const STARTED = 'started';
 const STOPPED = 'stopped';
+const PAUSED = 'paused';
 
 class Countdown extends Component {
-
 
     constructor(props, context) {
         super(props, context);
 
         this.handleSetCountdown = this.handleSetCountdown.bind(this);
         this.componentDidUpdate = this.componentDidUpdate.bind(this);
+        this.handleStatusChange = this.handleStatusChange.bind(this);
         this.startTimer = this.startTimer.bind(this);
 
         this.state = {
@@ -28,8 +31,14 @@ class Countdown extends Component {
                 case STARTED:
                     this.startTimer();
                     break;
-                default:
+                case STOPPED:
+                    this.setState({ count: undefined });
+                // falls through
+                case PAUSED:
+                    clearInterval(this.timer);
+                    delete this.timer;
                     break;
+                // no default
             }
         }
     }
@@ -39,6 +48,11 @@ class Countdown extends Component {
             count: seconds,
             countdownStatus: STARTED,
         })
+    }
+
+    handleStatusChange(newStatus) {
+        console.log(newStatus);
+        this.setState({ countdownStatus: newStatus });
     }
 
     startTimer() {
@@ -55,11 +69,16 @@ class Countdown extends Component {
     }
 
     render() {
-        const { count } = this.state;
+        const { count, countdownStatus } = this.state;
+        const ControlArea = () => {
+            return countdownStatus !== 'stopped'
+                ? (<Controls countdownStatus={countdownStatus} onStatusChange={this.handleStatusChange} />)
+                : (<CountdownForm onSetCountdown={this.handleSetCountdown} />);
+        };
         return (
             <dev>
                 <Clock totalSeconds={count} />
-                <CountdownForm onSetCountdown={this.handleSetCountdown} />
+                <ControlArea />
             </dev>
         );
     }

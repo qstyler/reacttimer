@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'react-foundation';
 
 class CountdownForm extends Component {
 
@@ -28,7 +29,7 @@ class CountdownForm extends Component {
                     onSubmit={this.onSubmit}
                 >
                     <input type="number" ref="seconds" placeholder="Enter time in seconds"/>
-                    <button className="button expanded">Start</button>
+                    <Button isExpanded>Start</Button>
                 </form>
             </div>
         );
