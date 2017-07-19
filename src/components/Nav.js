@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
-    Menu, MenuItem, Alignments,
+    Menu, MenuItem, Alignments, MenuText,
     TopBar, TopBarTitle, TopBarLeft, TopBarRight,
 } from 'react-foundation';
 
@@ -11,11 +11,9 @@ class Nav extends Component {
             <TopBar>
                 <TopBarLeft>
                     <Menu alignment={Alignments.LEFT}>
+                        <MenuText>React timer</MenuText>
                         <MenuItem>
-                            <NavLink exact to='/' className='menu-text'>React timer</NavLink>
-                        </MenuItem>
-                        <MenuItem>
-                            <NavLink to='/timer'>Timer</NavLink>
+                            <NavLink exact to='/'>Timer</NavLink>
                         </MenuItem>
                         <MenuItem>
                             <NavLink to='/countdown'>Countdown</NavLink>

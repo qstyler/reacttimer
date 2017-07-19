@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Row, Column } from 'react-foundation';
 
 import Nav from './components/Nav';
-import Home from './components/Home';
 import Timer from './components/Timer';
 import Countdown from './components/Countdown';
 
@@ -21,8 +20,7 @@ class App extends Component {
                     <Row>
                         <Column medium={8} centerOnSmall>
                             <Switch>
-                                <Route exact path='/' component={Home} />
-                                <Route path='/timer' component={Timer} />
+                                <Route exact path='/' component={Timer} />
                                 <Route path='/countdown' component={Countdown} />
                             </Switch>
                         </Column>
