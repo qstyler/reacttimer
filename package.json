@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "foundation-sites": "^6.4.1",
+    "pad-left": "^2.1.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-foundation": "^0.8.2",
@@ -13,7 +14,8 @@
     "enzyme": "^2.9.1",
     "jest-enzyme": "^3.5.3",
     "react-awesome-scripts": "0.2.10",
-    "react-test-renderer": "15.6.1"
+    "react-test-renderer": "15.6.1",
+    "prop-types": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
