@@ -6,3 +6,6 @@
         color: $nav-text-color;
     }
 }
+.top-bar ul li a.active {
+    font-weight: bold;
+}
