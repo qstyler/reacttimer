@@ -8,7 +8,7 @@ import Nav from '../src/components/Nav';
 describe('main test suite', () => {
 
     it('renders without crashing', () => {
-        expect(shallow(<App />)).toContainReact(<Nav />);
+        expect(shallow(<App />)).toContainReact(<Nav title="React timer app" />);
     });
 
 });

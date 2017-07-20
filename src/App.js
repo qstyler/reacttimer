@@ -16,7 +16,7 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div>
-                    <Nav />
+                    <Nav title="React timer app" />
                     <Row>
                         <Column medium={4} small={8} centerOnSmall>
                             <Switch>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme';
+import 'jest-enzyme';
 
 import Countdown from '../../src/components/Countdown';
 
@@ -12,11 +13,11 @@ describe('Countdown test suite', () => {
         const countdown = shallow(<Countdown />);
         countdown.instance().handleSetCountdown(10);
 
-        expect(countdown.state().count).toBe(10);
-        expect(countdown.state().countdownStatus).toBe('started');
+        expect(countdown).toHaveState('count', 10);
+        expect(countdown).toHaveState('countdownStatus', 'started');
 
         setTimeout(() => {
-            expect(countdown.state().count).toBe(9);
+            expect(countdown).toHaveState('count', 9);
             done();
         }, 1001);
     });
@@ -28,7 +29,7 @@ describe('Countdown test suite', () => {
         countdown.find('button.secondary').simulate('click');
 
         setTimeout(() => {
-            expect(countdown.state().count).toBe(10);
+            expect(countdown).toHaveState('count', 10);
             done();
         }, 1001);
     });

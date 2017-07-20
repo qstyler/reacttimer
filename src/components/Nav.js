@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import {
     Menu, MenuItem, Alignments, MenuText,
@@ -11,7 +12,7 @@ class Nav extends Component {
             <TopBar>
                 <TopBarLeft>
                     <Menu alignment={Alignments.LEFT}>
-                        <MenuText>React timer</MenuText>
+                        <MenuText>{this.props.title}</MenuText>
                         <MenuItem>
                             <NavLink exact to='/'>Timer</NavLink>
                         </MenuItem>
@@ -27,5 +28,9 @@ class Nav extends Component {
         );
     }
 }
+
+Nav.propTypes = {
+    title: PropTypes.string.isRequired,
+};
 
 export default Nav;
