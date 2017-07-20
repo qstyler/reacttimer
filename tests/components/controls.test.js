@@ -17,12 +17,12 @@ describe('Controls test suite', () => {
     describe('render', function () {
 
         it('started -> secondary', () => {
-            const controls = mount(<Controls countdownStatus={Status.STARTED} onStatusChange={() => {}} />);
+            const controls = mount(<Controls status={Status.STARTED} onStatusChange={() => {}} />);
             expect(controls.find('button.secondary')).toBePresent()
         });
 
         it('stopped -> primary', () => {
-            const controls = mount(<Controls countdownStatus={Status.PAUSED} onStatusChange={() => {}} />);
+            const controls = mount(<Controls status={Status.PAUSED} onStatusChange={() => {}} />);
             expect(controls.find('button.primary')).toBePresent()
         });
 
@@ -33,7 +33,7 @@ describe('Controls test suite', () => {
         it('stopped', () => {
             const spy = jest.fn();
             const controls = mount(
-                <Controls countdownStatus={Status.STARTED} onStatusChange={spy} />
+                <Controls status={Status.STARTED} onStatusChange={spy} />
             );
 
             controls.find('button.alert').simulate('click');
@@ -44,7 +44,7 @@ describe('Controls test suite', () => {
         it('started -> secondary', () => {
             const spy = jest.fn();
             const controls = mount(
-                <Controls countdownStatus={Status.STARTED} onStatusChange={spy} />
+                <Controls status={Status.STARTED} onStatusChange={spy} />
             );
 
             controls.find('button.secondary').simulate('click');
@@ -56,7 +56,7 @@ describe('Controls test suite', () => {
         it('stopped -> primary', () => {
             const spy = jest.fn();
             const controls = mount(
-                <Controls countdownStatus={Status.PAUSED} onStatusChange={spy} />
+                <Controls status={Status.PAUSED} onStatusChange={spy} />
             );
 
             controls.find('button.primary').simulate('click');
