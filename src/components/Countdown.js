@@ -76,7 +76,7 @@ class Countdown extends Component {
     render() {
         const { count, status } = this.state;
         const ControlArea = () => {
-            return status !== 'stopped'
+            return status !== Status.STOPPED
                 ? (<Controls status={status} onStatusChange={this.handleStatusChange} />)
                 : (<CountdownForm onSetCountdown={this.handleSetCountdown} />);
         };
