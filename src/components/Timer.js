@@ -27,7 +27,6 @@ class Timer extends Component {
         if (newStatus !== prevState.status) {
             switch (newStatus) {
                 case Status.STARTED:
-                    this.setState({ count: 0 });
                     this.startTimer();
                     break;
                 case Status.STOPPED:
@@ -46,9 +45,10 @@ class Timer extends Component {
     }
 
     startTimer() {
+        this.setState({ count: 0 });
         this.timer = setInterval(() => {
             this.setState({
-                count: 1 + this.state.count || 0,
+                count: 1 + this.state.count,
             });
         }, 1000);
     }
