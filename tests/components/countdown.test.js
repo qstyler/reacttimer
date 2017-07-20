@@ -3,6 +3,7 @@ import { mount, shallow } from 'enzyme';
 import 'jest-enzyme';
 
 import Countdown from '../../src/components/Countdown';
+import { Status } from '../../src/Status';
 
 describe('Countdown test suite', () => {
     it('Countdown should be true', () => {
@@ -14,7 +15,7 @@ describe('Countdown test suite', () => {
         countdown.instance().handleSetCountdown(10);
 
         expect(countdown).toHaveState('count', 10);
-        expect(countdown).toHaveState('countdownStatus', 'started');
+        expect(countdown).toHaveState('status', Status.STARTED);
 
         setTimeout(() => {
             expect(countdown).toHaveState('count', 9);
@@ -27,6 +28,7 @@ describe('Countdown test suite', () => {
         countdown.instance().handleSetCountdown(10);
 
         countdown.find('button.secondary').simulate('click');
+        expect(countdown).toHaveState('status', Status.PAUSED);
 
         setTimeout(() => {
             expect(countdown).toHaveState('count', 10);

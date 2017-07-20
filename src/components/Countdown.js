@@ -18,13 +18,13 @@ class Countdown extends Component {
 
         this.state = {
             count: undefined,
-            countdownStatus: Status.STOPPED,
+            status: Status.STOPPED,
         };
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const status = this.state.countdownStatus;
-        if (status !== prevState.countdownStatus) {
+        const status = this.state.status;
+        if (status !== prevState.status) {
             switch (status) {
                 case Status.STARTED:
                     this.startTimer();
@@ -47,12 +47,12 @@ class Countdown extends Component {
     handleSetCountdown(seconds) {
         this.setState({
             count: seconds,
-            countdownStatus: Status.STARTED,
+            status: Status.STARTED,
         })
     }
 
     handleStatusChange(newStatus) {
-        this.setState({ countdownStatus: newStatus });
+        this.setState({ status: newStatus });
     }
 
     startTimer() {
@@ -74,10 +74,10 @@ class Countdown extends Component {
     }
 
     render() {
-        const { count, countdownStatus } = this.state;
+        const { count, status } = this.state;
         const ControlArea = () => {
-            return countdownStatus !== 'stopped'
-                ? (<Controls countdownStatus={countdownStatus} onStatusChange={this.handleStatusChange} />)
+            return status !== 'stopped'
+                ? (<Controls status={status} onStatusChange={this.handleStatusChange} />)
                 : (<CountdownForm onSetCountdown={this.handleSetCountdown} />);
         };
         return (
