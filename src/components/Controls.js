@@ -18,9 +18,9 @@ class Controls extends Component {
     }
 
     render() {
-        const { countdownStatus } = this.props;
+        const { status } = this.props;
         const StartStopButton = () => {
-            switch (countdownStatus) {
+            switch (status) {
                 case Status.STARTED:
                     return <Button isExpanded color={Colors.SECONDARY} onClick={this.onStatusChange(Status.PAUSED)}>Pause</Button>;
                 case Status.PAUSED:
@@ -40,7 +40,7 @@ class Controls extends Component {
 }
 
 Controls.propTypes = {
-    countdownStatus: PropTypes.oneOf(Object.values(Status)).isRequired,
+    status: PropTypes.oneOf(Object.values(Status)).isRequired,
     onStatusChange: PropTypes.func.isRequired,
 };
 
