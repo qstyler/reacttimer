@@ -3,6 +3,7 @@ import 'jest-enzyme';
 import { mount, shallow } from 'enzyme';
 
 import Controls from '../../src/components/Controls';
+import { Status } from '../../src/Status';
 
 describe('Controls test suite', () => {
 
@@ -16,23 +17,23 @@ describe('Controls test suite', () => {
     describe('render', function () {
 
         it('started -> secondary', () => {
-            const controls = mount(<Controls countdownStatus="started" />);
+            const controls = mount(<Controls countdownStatus={Status.STARTED} onStatusChange={() => {}} />);
             expect(controls.find('button.secondary')).toBePresent()
         });
 
         it('stopped -> primary', () => {
-            const controls = mount(<Controls countdownStatus="paused" />);
+            const controls = mount(<Controls countdownStatus={Status.PAUSED} onStatusChange={() => {}} />);
             expect(controls.find('button.primary')).toBePresent()
         });
 
     });
 
-    describe('onStatusChange is called', () => {
+    describe('handleStatusChange is called', () => {
 
         it('stopped', () => {
             const spy = jest.fn();
             const controls = mount(
-                <Controls countdownStatus="started" onStatusChange={spy} />
+                <Controls countdownStatus={Status.STARTED} onStatusChange={spy} />
             );
 
             controls.find('button.alert').simulate('click');
@@ -43,24 +44,24 @@ describe('Controls test suite', () => {
         it('started -> secondary', () => {
             const spy = jest.fn();
             const controls = mount(
-                <Controls countdownStatus="started" onStatusChange={spy} />
+                <Controls countdownStatus={Status.STARTED} onStatusChange={spy} />
             );
 
             controls.find('button.secondary').simulate('click');
 
-            expect(spy).toBeCalledWith('paused');
+            expect(spy).toBeCalledWith(Status.PAUSED);
 
         });
 
         it('stopped -> primary', () => {
             const spy = jest.fn();
             const controls = mount(
-                <Controls countdownStatus="paused" onStatusChange={spy} />
+                <Controls countdownStatus={Status.PAUSED} onStatusChange={spy} />
             );
 
             controls.find('button.primary').simulate('click');
 
-            expect(spy).toBeCalledWith('started');
+            expect(spy).toBeCalledWith(Status.STARTED);
 
         });
 

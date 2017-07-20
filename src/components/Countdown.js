@@ -4,9 +4,7 @@ import Clock from './Clock';
 import CountdownForm from './CountdownForm';
 import Controls from './Controls';
 
-const STARTED = 'started';
-const STOPPED = 'stopped';
-const PAUSED = 'paused';
+import { Status } from '../Status';
 
 class Countdown extends Component {
 
@@ -20,7 +18,7 @@ class Countdown extends Component {
 
         this.state = {
             count: undefined,
-            countdownStatus: STOPPED,
+            countdownStatus: Status.STOPPED,
         };
     }
 
@@ -28,13 +26,13 @@ class Countdown extends Component {
         const status = this.state.countdownStatus;
         if (status !== prevState.countdownStatus) {
             switch (status) {
-                case STARTED:
+                case Status.STARTED:
                     this.startTimer();
                     break;
-                case STOPPED:
+                case Status.STOPPED:
                     this.setState({ count: undefined });
                 // falls through
-                case PAUSED:
+                case Status.PAUSED:
                     this.stopTimer();
                     break;
                 // no default
@@ -49,7 +47,7 @@ class Countdown extends Component {
     handleSetCountdown(seconds) {
         this.setState({
             count: seconds,
-            countdownStatus: STARTED,
+            countdownStatus: Status.STARTED,
         })
     }
 
