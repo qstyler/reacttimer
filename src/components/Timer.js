@@ -41,6 +41,10 @@ class Timer extends Component {
         }
     }
 
+    componentWillUnmount() {
+        this.stopTimer();
+    }
+
     startTimer() {
         this.timer = setInterval(() => {
             this.setState({
