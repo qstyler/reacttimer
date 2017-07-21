@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme';
 
-import CountdownForm from '../../src/components/CountdownForm';
+import CountdownForm from '../../components/CountdownForm';
 
 describe('countdown form test suite', () => {
     it('simply exists', () => {

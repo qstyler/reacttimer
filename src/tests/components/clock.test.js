@@ -2,7 +2,7 @@ import 'jest-enzyme';
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Clock from '../../src/components/Clock';
+import Clock from '../../components/Clock';
 
 describe('Testing clock component', () => {
 

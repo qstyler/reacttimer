@@ -2,8 +2,8 @@ import React from 'react'
 import { mount, shallow } from 'enzyme';
 import 'jest-enzyme';
 
-import Timer from '../../src/components/Timer';
-import { Status } from '../../src/Status';
+import Timer from '../../components/Timer';
+import { Status } from '../../Status';
 
 describe('Timer test suite', () => {
     it('Timer should be true', () => {

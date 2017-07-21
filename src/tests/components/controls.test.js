@@ -2,8 +2,8 @@ import React from 'react'
 import 'jest-enzyme';
 import { mount, shallow } from 'enzyme';
 
-import Controls from '../../src/components/Controls';
-import { Status } from '../../src/Status';
+import Controls from '../../components/Controls';
+import { Status } from '../../Status';
 
 describe('Controls test suite', () => {
 

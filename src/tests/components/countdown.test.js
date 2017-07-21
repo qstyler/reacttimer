@@ -2,8 +2,8 @@ import React from 'react'
 import { mount, shallow } from 'enzyme';
 import 'jest-enzyme';
 
-import Countdown from '../../src/components/Countdown';
-import { Status } from '../../src/Status';
+import Countdown from '../../components/Countdown';
+import { Status } from '../../Status';
 
 describe('Countdown test suite', () => {
     it('Countdown should be true', () => {
@@ -35,7 +35,5 @@ describe('Countdown test suite', () => {
             done();
         }, 1001);
     });
-
-
 
 });
